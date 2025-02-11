@@ -12,5 +12,10 @@ namespace UI
             InitializeComponent();
         }
 
+        private void btnPopUpLogout_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
     }
 }
