@@ -7,7 +7,7 @@ using Repository.Migrations.Service;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.RepositoryService;
-using Service.RepositoryService.Interfaces;
+using Service.RepositoryService.Base;
 
 namespace Service
 {
@@ -25,21 +25,21 @@ namespace Service
 
             services.AddSingleton<IPadraoRepository, PadraoRepository>();
             services.AddSingleton<IUserRepository, UserRepository>();
-
-            services.AddSingleton<IBaseRepositoryService<User>, UserRepoService>();
-            services.AddSingleton<IBaseRepositoryService<Padrao>, PadraoRepoService>();
+            services.AddSingleton<IEquipmentRepository, EquipmentRepository>();
+            services.AddSingleton<IEquipmentPadraoRepository, EquipmentPadraoRepository>();
         }
 
         public static void AddServices(this IServiceCollection services)
         {
-            services.AddSingleton<UserRepoService>();
-            services.AddSingleton<PadraoRepoService>();
-        }
+            services.AddSingleton<IBaseRepoService<User>, UserRepoService>();
+            services.AddSingleton<IBaseRepoService<Padrao>, PadraoRepoService>();
+            services.AddSingleton<IBaseRepoService<Equipment>, EquipmentRepoService>();
+            services.AddSingleton<IBaseRepoService<EquipmentPadrao>, EquipmentPadraoRepoService>();
 
-        private static void RunMigrations(string _connectionString)
-        {
-            SQLitePCL.Batteries.Init();
-            MigrationRunner.RunMigrations(_connectionString);
+            //REMOVE 
+            //services.AddSingleton<UserRepoService>();
+            //services.AddSingleton<PadraoRepoService>();
+            //services.AddSingleton<EquipmentRepoService>();
         }
     }
 }

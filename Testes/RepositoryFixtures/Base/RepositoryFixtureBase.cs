@@ -15,6 +15,7 @@ namespace Testes.RepositoryFixtures.Base
             var services = new ServiceCollection();
 
             services.AddRepositories(false);
+            services.AddServices();
 
             RegisterRepositories(services);
 

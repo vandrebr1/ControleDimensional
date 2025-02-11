@@ -4,7 +4,7 @@ using Service.RepositoryService.Base;
 
 namespace Service.RepositoryService
 {
-    public class UserRepoService(IRepository<User> repository) : BaseRepoService<User>(repository)
+    public class EquipmentRepoService(IRepository<Equipment> repository) : BaseRepoService<Equipment>(repository)
     {
     }
 }

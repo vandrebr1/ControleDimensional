@@ -14,6 +14,8 @@ namespace Repository.Migrations.Service
                     .WithGlobalConnectionString(connectionString)
                     .ScanIn(typeof(CreateUsuarioTableMigration).Assembly).For.Migrations()
                     .ScanIn(typeof(CreatePadraoTableMigration).Assembly).For.Migrations()
+                    .ScanIn(typeof(CreateEquipmentTableMigration).Assembly).For.Migrations()
+                    .ScanIn(typeof(CreateEquipmentPadraoTableMigration).Assembly).For.Migrations()
                     )
                 .AddLogging(lb => lb.AddFluentMigratorConsole())
                 .BuildServiceProvider(false);

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Models.Interfaces;
 
-namespace Service.RepositoryService.Interfaces
+namespace Service.RepositoryService.Base
 {
-    public interface IBaseRepositoryService<T> where T : IModel
+    public interface IBaseRepoService<T> where T : IModel
     {
         int Insert(T entity);
         void Update(T entity);

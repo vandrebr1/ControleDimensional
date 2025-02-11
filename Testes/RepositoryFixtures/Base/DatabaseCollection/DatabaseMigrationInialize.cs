@@ -3,9 +3,9 @@ using Repository.Migrations.Service;
 
 namespace Testes.RepositoryFixtures.Base.DatabaseCollection
 {
-    public class DatabaseMigrationInializeFixture
+    public class DatabaseMigrationInialize
     {
-        public DatabaseMigrationInializeFixture()
+        public DatabaseMigrationInialize()
         {
             string connectionString = DatabaseConfig.GetConnectionString(false);
 

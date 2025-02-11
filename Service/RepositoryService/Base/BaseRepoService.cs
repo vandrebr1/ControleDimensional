@@ -1,14 +1,13 @@
 ﻿using Common.Models.Interfaces;
 using Repository.Repositories.Base;
-using Service.RepositoryService.Interfaces;
 
-namespace Service.RepositoryService
+namespace Service.RepositoryService.Base
 {
-    public class BaseRepositoryService<T> : IBaseRepositoryService<T> where T : IModel
+    public class BaseRepoService<T> : IBaseRepoService<T> where T : IModel
     {
         private readonly IRepository<T> _repository;
 
-        public BaseRepositoryService(IRepository<T> repository)
+        public BaseRepoService(IRepository<T> repository)
         {
             _repository = repository;
         }

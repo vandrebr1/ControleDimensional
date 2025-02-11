@@ -1,7 +1,7 @@
 ﻿namespace Testes.RepositoryFixtures.Base.DatabaseCollection
 {
-    [CollectionDefinition("DatabaseMigrationInialize")]
-    public class DatabaseCollection : ICollectionFixture<DatabaseMigrationInializeFixture>
+    [CollectionDefinition("DatabaseCollection")]
+    public class DatabaseCollection : ICollectionFixture<DatabaseMigrationInialize>
     {
     }
 }

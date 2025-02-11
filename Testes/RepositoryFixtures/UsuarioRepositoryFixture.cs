@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Repository.Repositories;
 using Repository.Repositories.Base;
-using Service.RepositoryService.Interfaces;
+using Service.RepositoryService.Base;
 using Testes.RepositoryFixtures.Base;
 
 namespace Testes.RepositoryFixtures
@@ -10,13 +10,13 @@ namespace Testes.RepositoryFixtures
     [Collection("DatabaseCollection")]
     public class UsuarioRepositoryFixture : RepositoryFixtureBase
     {
-        private readonly IBaseRepositoryService<User> _userRepoService;
+        private readonly IBaseRepoService<User> _userRepoService;
         private readonly User _user;
 
         public UsuarioRepositoryFixture()
         {
             _user = ReturnUser();
-            _userRepoService = _serviceProvider.GetRequiredService<IBaseRepositoryService<User>>();
+            _userRepoService = _serviceProvider.GetRequiredService<IBaseRepoService<User>>();
         }
 
         protected override void RegisterRepositories(IServiceCollection services)

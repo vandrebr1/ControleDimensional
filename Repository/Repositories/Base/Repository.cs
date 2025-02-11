@@ -54,7 +54,7 @@ namespace Repository.Repositories.Base
             _connection.Execute(sql, entity);
         }
 
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
             string sql = $"DELETE FROM {TableName} WHERE Id = @Id";
             if (_connection.State != ConnectionState.Open)
