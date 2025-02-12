@@ -1,9 +1,8 @@
 ﻿using System.Data;
+using System.Data.SQLite;
 using Common.Models;
-using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.DependencyInjection;
 using Repository.Configuration;
-using Repository.Migrations.Service;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.RepositoryService;
@@ -20,7 +19,7 @@ namespace Service
 
             services.AddTransient<IDbConnection>(provider =>
             {
-                return new SqliteConnection(connectionString);
+                return new SQLiteConnection(connectionString);
             });
 
             services.AddSingleton<IPadraoRepository, PadraoRepository>();

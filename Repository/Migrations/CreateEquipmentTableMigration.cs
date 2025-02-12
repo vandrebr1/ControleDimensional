@@ -19,6 +19,6 @@ public class CreateEquipmentTableMigration : Migration
 
     public override void Down()
     {
-        Delete.Table("Padroes");
+        Delete.Table("Equipments");
     }
 }

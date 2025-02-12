@@ -8,8 +8,6 @@ namespace Testes.RepositoryFixtures.Base.DatabaseCollection
         public DatabaseMigrationInialize()
         {
             string connectionString = DatabaseConfig.GetConnectionString(false);
-
-            SQLitePCL.Batteries.Init();
             MigrationRunner.RunMigrations(connectionString);
         }
     }
