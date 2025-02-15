@@ -7,7 +7,7 @@ namespace Repository.Repositories
 {
     public class EquipmentRepository : Repository<Equipment>, IEquipmentRepository
     {
-        protected override string TableName => "Equipaments";
+        protected override string TableName => "Equipments";
 
         public EquipmentRepository(IDbConnection connection) : base(connection)
         {

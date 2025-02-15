@@ -9,11 +9,10 @@ public class CreateEquipmentTableMigration : Migration
             .WithColumn("Id").AsInt32().PrimaryKey().Identity()
             .WithColumn("Name").AsString(10).NotNullable().Indexed()
             .WithColumn("Abbreviation").AsString(4).NotNullable()
-            .WithColumn("UnidadeMedida").AsString(5).NotNullable()
             .WithColumn("DtCadastro").AsDateTime().NotNullable()
-            .WithColumn("CadastradoPor").AsString(25).Nullable()
+            .WithColumn("CadastradoPor").AsString(25).NotNullable()
             .WithColumn("DtModificado").AsDateTime().NotNullable()
-            .WithColumn("ModificadoPor").AsString(25).Nullable()
+            .WithColumn("ModificadoPor").AsString(25).NotNullable()
             .WithColumn("IsDeleted").AsBoolean().NotNullable();
     }
 

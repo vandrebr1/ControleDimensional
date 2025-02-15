@@ -1,4 +1,6 @@
-﻿namespace Common.Models
+﻿using Common.Attribute;
+
+namespace Common.Models
 {
     public class Equipment : BaseModel
     {
@@ -8,6 +10,7 @@
 
         public string Abbreviation { get; set; }
 
+        [Ignore]
         public List<Padrao> Padroes { get; set; } = new List<Padrao>();
 
     }

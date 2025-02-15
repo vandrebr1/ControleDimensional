@@ -1,4 +1,6 @@
 ﻿using System.Data;
+using Common.Attribute;
+using System.Reflection;
 using Common.Models;
 using Common.Models.Interfaces;
 using Dapper;
@@ -94,21 +96,21 @@ namespace Repository.Repositories.Base
         private string GetColunas()
         {
             return string.Join(", ", typeof(T).GetProperties()
-                .Where(p => p.Name != "Id")
+                .Where(p => p.Name != "Id" && p.GetCustomAttribute<IgnoreAttribute>() == null)
                 .Select(p => p.Name));
         }
 
         private string GetParametros()
         {
             return string.Join(", ", typeof(T).GetProperties()
-                .Where(p => p.Name != "Id")
+                .Where(p => p.Name != "Id" && p.GetCustomAttribute<IgnoreAttribute>() == null)
                 .Select(p => $"@{p.Name}"));
         }
 
         private string GetCamposAtualizar()
         {
             return string.Join(", ", typeof(T).GetProperties()
-                .Where(p => p.Name != "Id")
+                .Where(p => p.Name != "Id" && p.GetCustomAttribute<IgnoreAttribute>() == null   )
                 .Select(p => $"{p.Name} = @{p.Name}"));
         }
     }
