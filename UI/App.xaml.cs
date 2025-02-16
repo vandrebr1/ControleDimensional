@@ -27,8 +27,7 @@ namespace UI
 
         private void ConfigureServices(IServiceCollection services)
         {
-            services.AddRepositories(false);
-            services.AddServices();
+            services.RegisterDI(false);
 
             services.AddSingleton<MainWindow>();
         }

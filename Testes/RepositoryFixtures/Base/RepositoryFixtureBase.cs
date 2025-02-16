@@ -14,16 +14,11 @@ namespace Testes.RepositoryFixtures.Base
         {
             var services = new ServiceCollection();
 
-            services.AddRepositories(false);
-            services.AddServices();
-
-            RegisterRepositories(services);
+            services.RegisterDI(false);
 
             _serviceProvider = services.BuildServiceProvider();
             _connection = _serviceProvider.GetRequiredService<IDbConnection>();
         }
-
-        protected abstract void RegisterRepositories(IServiceCollection services);
 
         public void Dispose()
         {

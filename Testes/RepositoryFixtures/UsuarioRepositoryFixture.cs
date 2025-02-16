@@ -19,20 +19,15 @@ namespace Testes.RepositoryFixtures
             _userRepoService = _serviceProvider.GetRequiredService<IBaseRepoService<User>>();
         }
 
-        protected override void RegisterRepositories(IServiceCollection services)
-        {
-            services.AddSingleton<IRepository<User>, UserRepository>();
-        }
-
         [Fact]
         public void CRUD_CheckOperations()
         {
-            Insert_ShouldInsertUser();
-            Update_ShouldUpdatUser();
-            Delete_ShouldRemoveUser();
+            Insert_ShouldInsert();
+            Update_ShouldUpdate();
+            Delete_ShouldRemove();
         }
 
-        private void Insert_ShouldInsertUser()
+        private void Insert_ShouldInsert()
         {
             // Act
             _user.Id = _userRepoService.Insert(_user);
@@ -47,7 +42,7 @@ namespace Testes.RepositoryFixtures
         }
 
 
-        private void Update_ShouldUpdatUser()
+        private void Update_ShouldUpdate()
         {
             _user.Nome = "João da Silva";
             _user.Login = "joao.dasilva";
@@ -63,7 +58,7 @@ namespace Testes.RepositoryFixtures
 
         }
 
-        private void Delete_ShouldRemoveUser()
+        private void Delete_ShouldRemove()
         {
             // Act
             _userRepoService.Delete(_user.Id);

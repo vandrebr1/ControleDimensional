@@ -5,7 +5,7 @@ using Repository.Repositories.Interfaces;
 
 namespace Repository.Repositories
 {
-    public class PadraoRepository : Repository<Padrao>, IPadraoRepository
+    public class PadraoRepository : Repository<Padrao>
     {
         protected override string TableName => "Padroes";
 

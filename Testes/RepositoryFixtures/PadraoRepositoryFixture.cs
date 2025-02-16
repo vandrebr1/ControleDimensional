@@ -20,20 +20,15 @@ namespace Testes.RepositoryFixtures
 
         }
 
-        protected override void RegisterRepositories(IServiceCollection services)
-        {
-            services.AddSingleton<IRepository<Padrao>, PadraoRepository>();
-        }
-
         [Fact]
         public void CRUD_CheckOperations()
         {
-            Insert_ShouldInsertUser();
-            Update_ShouldUpdatUser();
-            Delete_ShouldRemoveUser();
+            Insert_ShouldInsert();
+            Update_ShouldUpdate();
+            Delete_ShouldRemove();
         }
 
-        private void Insert_ShouldInsertUser()
+        private void Insert_ShouldInsert()
         {
             // Act
             _padrao.Id = _padraoRepoService.Insert(_padrao);
@@ -47,7 +42,7 @@ namespace Testes.RepositoryFixtures
         }
 
 
-        private void Update_ShouldUpdatUser()
+        private void Update_ShouldUpdate()
         {
             _padrao.Nome = "Ø Rodapé";
             _padrao.Ferramental = "Paquimetro";
@@ -63,7 +58,7 @@ namespace Testes.RepositoryFixtures
 
         }
 
-        private void Delete_ShouldRemoveUser()
+        private void Delete_ShouldRemove()
         {
             // Act
             _padraoRepoService.Delete(_padrao.Id);

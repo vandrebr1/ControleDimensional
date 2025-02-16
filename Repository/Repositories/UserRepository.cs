@@ -5,7 +5,7 @@ using Repository.Repositories.Interfaces;
 
 namespace Repository.Repositories
 {
-    public class UserRepository : Repository<User>, IUserRepository
+    public class UserRepository : Repository<User>
     {
         protected override string TableName => "Usuarios";
 

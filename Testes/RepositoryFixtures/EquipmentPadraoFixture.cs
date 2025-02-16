@@ -26,26 +26,18 @@ namespace Testes.RepositoryFixtures
             _padraoRepoService = _serviceProvider.GetRequiredService<IBaseRepoService<Padrao>>();
 
             InsertPadroes();
-            //_equipment = ReturnEquipment();
 
-        }
-
-        protected override void RegisterRepositories(IServiceCollection services)
-        {
-            services.AddSingleton<IRepository<Equipment>, EquipmentRepository>();
         }
 
         [Fact]
         public void CRUD_CheckOperations()
         {
-            Insert_ShouldInsertUser();
-            Update_ShouldUpdatUser();
-            Delete_ShouldRemoveUser();
-
-            Delete_Padroes();
+            Insert_ShouldInsert();
+            Update_ShouldUpdate();
+            Delete_ShouldRemove();
         }
 
-        private void Insert_ShouldInsertUser()
+        private void Insert_ShouldInsert()
         {
             // Act
             _equipment.Id = _equipmentRepoService.Insert(_equipment);
@@ -59,7 +51,7 @@ namespace Testes.RepositoryFixtures
         }
 
 
-        private void Update_ShouldUpdatUser()
+        private void Update_ShouldUpdate()
         {
             _equipment.Name = "FORMA 1";
             _equipment.Abbreviation = "FO1";
@@ -74,7 +66,7 @@ namespace Testes.RepositoryFixtures
             Assert.Equal("FO1", equipmentUpdated.Abbreviation);
         }
 
-        private void Delete_ShouldRemoveUser()
+        private void Delete_ShouldRemove()
         {
             // Act
             _equipmentRepoService.Delete(_equipment.Id);
