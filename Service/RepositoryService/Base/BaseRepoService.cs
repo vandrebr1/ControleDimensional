@@ -12,27 +12,27 @@ namespace Service.RepositoryService.Base
             _repository = repository;
         }
 
-        public int Insert(T entity)
+        public virtual int Insert(T entity)
         {
             return _repository.Insert(entity);
         }
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             _repository.Update(entity);
         }
 
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
             _repository.Delete(id);
         }
 
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
             return _repository.GetById(id);
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return _repository.GetAll();
         }

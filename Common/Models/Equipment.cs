@@ -11,7 +11,7 @@ namespace Common.Models
         public string Abbreviation { get; set; }
 
         [Ignore]
-        public List<Padrao> Padroes { get; set; } = new List<Padrao>();
+        public IEnumerable<Padrao> Padroes { get; set; } = new List<Padrao>();
 
     }
 }

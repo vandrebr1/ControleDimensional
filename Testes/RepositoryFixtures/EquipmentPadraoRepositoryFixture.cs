@@ -9,24 +9,25 @@ using Testes.RepositoryFixtures.Base;
 namespace Testes.RepositoryFixtures
 {
     [Collection("DatabaseCollection")]
-    public class EquipmentPadraoFixture : RepositoryFixtureBase
+    public class EquipmentPadraoRepositoryFixture : RepositoryFixtureBase
     {
         private readonly IBaseRepoService<Equipment> _equipmentRepoService;
         private readonly IBaseRepoService<Padrao> _padraoRepoService;
+        private readonly IEqu _equipmentPadraoRepoService;
+
 
         private Padrao _padrao1;
         private Padrao _padrao2;
         private Padrao _padrao3;
+        private Equipment _equipment;
 
-        private readonly Equipment _equipment;
-
-        public EquipmentPadraoFixture()
+        public EquipmentPadraoRepositoryFixture()
         {
             _equipmentRepoService = _serviceProvider.GetRequiredService<IBaseRepoService<Equipment>>();
             _padraoRepoService = _serviceProvider.GetRequiredService<IBaseRepoService<Padrao>>();
+            _equipmentPadraoRepoService = _serviceProvider.GetRequiredService<IBaseRepoService<EquipmentPadrao>>();
 
             InsertPadroes();
-
         }
 
         [Fact]
@@ -39,6 +40,17 @@ namespace Testes.RepositoryFixtures
 
         private void Insert_ShouldInsert()
         {
+
+            //Arrange
+            _equipment = new Equipment
+            {
+                Name = "FORMA",
+                Abbreviation = "FO",
+                CadastradoPor = "SYSTEM",
+                ModificadoPor = "SYSTEM",
+                Padroes = new List<Padrao> { _padrao1, _padrao2, _padrao3 }
+            };
+
             // Act
             _equipment.Id = _equipmentRepoService.Insert(_equipment);
 
@@ -48,13 +60,14 @@ namespace Testes.RepositoryFixtures
             Assert.NotNull(equipment);
             Assert.Equal(_equipment.Name, equipment.Name);
             Assert.Equal(_equipment.Abbreviation, equipment.Abbreviation);
+            Assert.Equal(3, _equipment.Padroes.Count());
         }
-
 
         private void Update_ShouldUpdate()
         {
             _equipment.Name = "FORMA 1";
             _equipment.Abbreviation = "FO1";
+            _equipment.Padroes = new List<Padrao> { _padrao1, _padrao2 };
 
             // Act
             _equipmentRepoService.Update(_equipment);
@@ -64,6 +77,8 @@ namespace Testes.RepositoryFixtures
             Assert.NotNull(equipmentUpdated);
             Assert.Equal("FORMA 1", equipmentUpdated.Name);
             Assert.Equal("FO1", equipmentUpdated.Abbreviation);
+            Assert.Equal(2, _equipment.Padroes.Count());
+
         }
 
         private void Delete_ShouldRemove()
@@ -71,9 +86,12 @@ namespace Testes.RepositoryFixtures
             // Act
             _equipmentRepoService.Delete(_equipment.Id);
 
+            _equipmentPadraoRepoService.get
+
             // Assert
             var equipmentDeleted = _equipmentRepoService.GetById(_equipment.Id);
             Assert.Null(equipmentDeleted);
+
         }
 
         private void InsertPadroes()

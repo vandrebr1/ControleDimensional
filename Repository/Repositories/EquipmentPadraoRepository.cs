@@ -8,7 +8,7 @@ namespace Repository.Repositories
 {
     public class EquipmentPadraoRepository : Repository<EquipmentPadrao>, IEquipmentPadraoRepository
     {
-        protected override string TableName => "EquipamentsPadroes";
+        protected override string TableName => "EquipmentsPadroes";
 
         public EquipmentPadraoRepository(IDbConnection connection) : base(connection)
         {
@@ -19,6 +19,16 @@ namespace Repository.Repositories
             throw new NotSupportedException("O método Delete(int id) não é suportado para EquipmentsPadroes. Use DeleteBy(int idEquipamento)");
         }
 
+        public IEnumerable<EquipmentPadrao> GetAllByEquipamentId(int EquipmentId)
+        {
+            string sql = $"SELECT * FROM {TableName} WHERE EquipmentId = @EquipmentId";
+            if (_connection.State != ConnectionState.Open)
+            {
+                _connection.Open();
+            }
+            return _connection.Query<EquipmentPadrao>(sql, new { EquipmentId });
+        }
+
         public void DeleteByEquipmentId(int EquipmentId)
         {
             string sql = $"DELETE FROM {TableName} WHERE EquipmentId = @EquipmentId";
@@ -26,7 +36,7 @@ namespace Repository.Repositories
             {
                 _connection.Open();
             }
-            _connection.Execute(sql, EquipmentId);
+            _connection.Execute(sql, new { EquipmentId });
         }
     }
 }

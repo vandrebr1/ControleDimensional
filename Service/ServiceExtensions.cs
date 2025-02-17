@@ -4,7 +4,6 @@ using Common.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Repository.Configuration;
 using Repository.Repositories;
-using Repository.Repositories.Base;
 using Repository.Repositories.Interfaces;
 using Service.RepositoryService;
 using Service.RepositoryService.Base;
@@ -13,7 +12,6 @@ namespace Service
 {
     public static class ServiceExtensions
     {
-
         public static void RegisterDI(this IServiceCollection services, bool isProductionDB)
         {
             string connectionString = DatabaseConfig.GetConnectionString(isProductionDB);
@@ -29,10 +27,10 @@ namespace Service
 
         private static void AddRepositories(this IServiceCollection services)
         {
-            services.AddSingleton<IRepository<User>, UserRepository>();
-            services.AddSingleton<IRepository<Padrao>, PadraoRepository>();
-            services.AddSingleton<IRepository<Equipment>, EquipmentRepository>();
-            services.AddSingleton<IRepository<EquipmentPadrao>, EquipmentPadraoRepository>();
+            services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IPadraoRepository, PadraoRepository>();
+            services.AddSingleton<IEquipmentRepository, EquipmentRepository>();
+            services.AddSingleton<IEquipmentPadraoRepository, EquipmentPadraoRepository>();
         }
 
         private static void AddServices(this IServiceCollection services)
