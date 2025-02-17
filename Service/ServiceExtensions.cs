@@ -38,7 +38,7 @@ namespace Service
             services.AddSingleton<IBaseRepoService<User>, UserRepoService>();
             services.AddSingleton<IBaseRepoService<Padrao>, PadraoRepoService>();
             services.AddSingleton<IBaseRepoService<Equipment>, EquipmentRepoService>();
-            services.AddSingleton<IBaseRepoService<EquipmentPadrao>, EquipmentPadraoRepoService>();
+            services.AddSingleton<IEquipmentPadraoRepoService, EquipmentPadraoRepoService>();
         }
     }
 }

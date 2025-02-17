@@ -3,7 +3,7 @@ using Repository.Repositories.Base;
 
 namespace Service.RepositoryService.Base
 {
-    public class BaseRepoService<T> : IBaseRepoService<T> where T : IModel
+    public abstract class BaseRepoService<T> : IBaseRepoService<T> where T : IModel
     {
         private readonly IRepository<T> _repository;
 

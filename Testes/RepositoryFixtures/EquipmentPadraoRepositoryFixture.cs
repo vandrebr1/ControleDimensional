@@ -13,7 +13,7 @@ namespace Testes.RepositoryFixtures
     {
         private readonly IBaseRepoService<Equipment> _equipmentRepoService;
         private readonly IBaseRepoService<Padrao> _padraoRepoService;
-        private readonly IEqu _equipmentPadraoRepoService;
+        private readonly IEquipmentPadraoRepoService _equipmentPadraoRepoService;
 
 
         private Padrao _padrao1;
@@ -25,7 +25,7 @@ namespace Testes.RepositoryFixtures
         {
             _equipmentRepoService = _serviceProvider.GetRequiredService<IBaseRepoService<Equipment>>();
             _padraoRepoService = _serviceProvider.GetRequiredService<IBaseRepoService<Padrao>>();
-            _equipmentPadraoRepoService = _serviceProvider.GetRequiredService<IBaseRepoService<EquipmentPadrao>>();
+            _equipmentPadraoRepoService = _serviceProvider.GetRequiredService<IEquipmentPadraoRepoService>();
 
             InsertPadroes();
         }
@@ -86,11 +86,10 @@ namespace Testes.RepositoryFixtures
             // Act
             _equipmentRepoService.Delete(_equipment.Id);
 
-            _equipmentPadraoRepoService.get
 
             // Assert
-            var equipmentDeleted = _equipmentRepoService.GetById(_equipment.Id);
-            Assert.Null(equipmentDeleted);
+            var equipmentPadraoDeleted = _equipmentPadraoRepoService.GetAllByEquipamentId(_equipment.Id);
+            Assert.Empty(equipmentPadraoDeleted);
 
         }
 

@@ -19,24 +19,24 @@ namespace Repository.Repositories
             throw new NotSupportedException("O método Delete(int id) não é suportado para EquipmentsPadroes. Use DeleteBy(int idEquipamento)");
         }
 
-        public IEnumerable<EquipmentPadrao> GetAllByEquipamentId(int EquipmentId)
+        public IEnumerable<EquipmentPadrao> GetAllByEquipamentId(int equipmentId)
         {
-            string sql = $"SELECT * FROM {TableName} WHERE EquipmentId = @EquipmentId";
+            string sql = $"SELECT * FROM {TableName} WHERE EquipmentId = @equipmentId";
             if (_connection.State != ConnectionState.Open)
             {
                 _connection.Open();
             }
-            return _connection.Query<EquipmentPadrao>(sql, new { EquipmentId });
+            return _connection.Query<EquipmentPadrao>(sql, new { equipmentId });
         }
 
-        public void DeleteByEquipmentId(int EquipmentId)
+        public void DeleteByEquipmentId(int equipmentId)
         {
-            string sql = $"DELETE FROM {TableName} WHERE EquipmentId = @EquipmentId";
+            string sql = $"DELETE FROM {TableName} WHERE EquipmentId = @equipmentId";
             if (_connection.State != ConnectionState.Open)
             {
                 _connection.Open();
             }
-            _connection.Execute(sql, new { EquipmentId });
+            _connection.Execute(sql, new { equipmentId });
         }
     }
 }
