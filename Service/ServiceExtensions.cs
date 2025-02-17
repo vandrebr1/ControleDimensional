@@ -7,6 +7,7 @@ using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.RepositoryService;
 using Service.RepositoryService.Base;
+using Service.RepositoryService.Interfaces;
 
 namespace Service
 {

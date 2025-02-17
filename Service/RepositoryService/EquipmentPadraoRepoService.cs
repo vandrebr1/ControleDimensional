@@ -1,6 +1,7 @@
 ﻿using Common.Models;
 using Repository.Repositories.Interfaces;
 using Service.RepositoryService.Base;
+using Service.RepositoryService.Interfaces;
 
 namespace Service.RepositoryService
 {

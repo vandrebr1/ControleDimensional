@@ -1,6 +1,6 @@
 ﻿using Common.Models;
 
-namespace Service.RepositoryService
+namespace Service.RepositoryService.Interfaces
 {
     public interface IEquipmentPadraoRepoService
     {

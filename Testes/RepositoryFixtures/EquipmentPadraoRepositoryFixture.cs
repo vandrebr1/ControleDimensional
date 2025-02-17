@@ -2,8 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Repository.Repositories;
 using Repository.Repositories.Base;
-using Service.RepositoryService;
 using Service.RepositoryService.Base;
+using Service.RepositoryService.Interfaces;
 using Testes.RepositoryFixtures.Base;
 
 namespace Testes.RepositoryFixtures
