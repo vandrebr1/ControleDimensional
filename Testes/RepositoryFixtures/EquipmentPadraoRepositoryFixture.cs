@@ -1,7 +1,5 @@
 ﻿using Common.Models;
 using Microsoft.Extensions.DependencyInjection;
-using Repository.Repositories;
-using Repository.Repositories.Base;
 using Service.RepositoryService.Base;
 using Service.RepositoryService.Interfaces;
 using Testes.RepositoryFixtures.Base;
