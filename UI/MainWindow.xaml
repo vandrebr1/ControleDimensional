@@ -55,7 +55,7 @@
                     </Button>
                 </Grid>
                 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF1368BD" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <ListViewItem Height="60">
+                    <ListViewItem>
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
                             <TextBlock Text="Controle Dimensional" VerticalAlignment="Center" Margin="20 10"/>
@@ -67,7 +67,13 @@
                             <TextBlock Text="Cadastrar" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem x:Name="MenuEquipamento" Height="60" Selected="MenuEquipamento_Selected">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewGridPlus" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Cadastrar Equipamento" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" x:Name="MenuUsuarios" Selected="MenuUsuarios_Selected">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="AccountPlus" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
                             <TextBlock Text="Cadastrar usuário" VerticalAlignment="Center" Margin="20 10"/>
@@ -82,5 +88,8 @@
                 </ListView>
             </StackPanel>
         </Grid>
+
+        <ContentControl x:Name="MainContent" Margin="60,60,0,0" />
+
     </Grid>
 </Window>

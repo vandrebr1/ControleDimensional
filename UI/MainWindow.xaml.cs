@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using UI.Equipamento;
+using UI.Usuario;
 
 namespace UI
 {
@@ -27,6 +29,16 @@ namespace UI
         {
             ButtonOpenMenu.Visibility = Visibility.Visible;
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
+        }
+
+        private void MenuUsuarios_Selected(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new UserControlUsuario();
+        }
+
+        private void MenuEquipamento_Selected(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new UserControlEquipamento();
         }
     }
 }
