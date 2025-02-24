@@ -29,7 +29,7 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid Background="LightGray">
-        <Grid Height="60" VerticalAlignment="Top" Background="#FF1368BD">
+        <Grid x:Name="TopBar" Height="60" VerticalAlignment="Top" Background="#FF1368BD">
             <TextBlock Text="Controle Dimensional" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold"/>
             <materialDesign:PackIcon Kind="Account" Width="15" VerticalAlignment="Center" Foreground="#FFDAD4D4" Margin="979,0,0,0" Height="15"/>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
@@ -74,7 +74,7 @@
             </StackPanel>
         </Grid>
 
-        <ContentControl x:Name="MainContent"  Panel.ZIndex="-1" />
+        <ContentControl x:Name="MainContent" Margin="60,60,0,0"  Panel.ZIndex="-1" />
 
     </Grid>
 </Window>

@@ -8,14 +8,34 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
 
-        <Border Background="LightGray" Padding="16">
-            <WrapPanel x:Name="ContainerPanel" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
-                <Button Content="Add"
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                    Style="{StaticResource MaterialDesignRaisedButton}"
-                    ToolTip="Resource name: MaterialDesignRaisedButton" />
-            </WrapPanel>
-        </Border>
+        <StackPanel Background="LightGray">
+            <TextBlock Text="Cadastro de Usuário" FontSize="16" FontWeight="Bold" Margin="10" Foreground="Black" />
+            <StackPanel Orientation="Horizontal" Margin="5">
+
+                <Button Content="Adicionar" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="5" />
+                <Button Content="Editar" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="5"  />
+                <Button Content="Excluir" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="5"  />
+                <Button Content="Bloquear" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="5" />
+
+                <TextBox x:Name="txbPesquisar"
+                        
+                   materialDesign:HintAssist.Hint="Pesquisar"
+                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                   Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}" Width="240" Height="40" FontSize="14" SelectionTextBrush="Black" Foreground="Black" Margin="10,0,0,0" />
+                
+                <Button Content="{materialDesign:PackIcon magnify}" Width="50" Height="40" />
+            </StackPanel>
+
+            <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column" Margin="10" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Usuário" Binding="{Binding Nome}" Width="*" />
+                    <DataGridTextColumn Header="Acesso" Binding="{Binding Acesso}" Width="*" />
+                    <DataGridTextColumn Header="Bloqueado" Binding="{Binding Bloqueado}" Width="*" />
+                    <DataGridTextColumn Header="Cadastrado" Binding="{Binding DataCadastro}" Width="*" />
+                    <DataGridTextColumn Header="Usuário" Binding="{Binding CriadoPor}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
 
     </Grid>
 </UserControl>
