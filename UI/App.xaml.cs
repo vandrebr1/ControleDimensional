@@ -21,8 +21,6 @@ namespace UI
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
 
-            var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
-            mainWindow.Show();
         }
 
         private void ConfigureServices(IServiceCollection services)
