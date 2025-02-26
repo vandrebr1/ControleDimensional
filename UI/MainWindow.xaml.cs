@@ -9,9 +9,12 @@ namespace UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly UserControlUsuario _userControlUsuario;
+
+        public MainWindow(UserControlUsuario userControlUsuario)
         {
             InitializeComponent();
+            _userControlUsuario = userControlUsuario;
         }
 
         private void btnPopUpLogout_Click(object sender, RoutedEventArgs e)
@@ -33,7 +36,7 @@ namespace UI
 
         private void MenuUsuarios_Selected(object sender, RoutedEventArgs e)
         {
-            MainContent.Content = new UserControlUsuario();
+            MainContent.Content = _userControlUsuario;
         }
 
         private void MenuEquipamento_Selected(object sender, RoutedEventArgs e)

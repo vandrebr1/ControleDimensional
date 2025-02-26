@@ -7,35 +7,42 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-
         <StackPanel Background="LightGray">
             <TextBlock Text="Cadastro de Usuário" FontSize="16" FontWeight="Bold" Margin="10" Foreground="Black" />
-            <StackPanel Orientation="Horizontal" Margin="5">
 
-                <Button Content="Adicionar" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="5" />
-                <Button Content="Editar" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="5"  />
-                <Button Content="Excluir" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="5"  />
-                <Button Content="Bloquear" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="5" />
+            <!-- Grid para alinhar os controles -->
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
+                <!-- Botões à esquerda -->
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    <Button Content="Adicionar" Margin="5" />
+                    <Button Content="Editar" Margin="5" />
+                </StackPanel>
+
+                <!-- TextBox e Botão de Pesquisa à direita -->
                 <TextBox x:Name="txbPesquisar"
-                        
-                   materialDesign:HintAssist.Hint="Pesquisar"
-                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                   Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}" Width="240" Height="40" FontSize="14" SelectionTextBrush="Black" Foreground="Black" Margin="10,0,0,0" />
-                
-                <Button Content="{materialDesign:PackIcon magnify}" Width="50" Height="40" />
-            </StackPanel>
+                         Grid.Column="1"
+                         materialDesign:HintAssist.Hint="Pesquisar"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Width="240" Height="40" FontSize="14" SelectionTextBrush="Black" Foreground="Black" Margin="10,0,0,0" />
 
-            <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column" Margin="10" IsReadOnly="True">
+                <Button Content="{materialDesign:PackIcon magnify}" Grid.Column="2" Width="50" Height="40" />
+            </Grid>
+
+            <!-- DataGrid -->
+            <DataGrid AutoGenerateColumns="False" HeadersVisibility="Column" Margin="10" IsReadOnly="True" ItemsSource="{Binding Users}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Usuário" Binding="{Binding Nome}" Width="*" />
-                    <DataGridTextColumn Header="Acesso" Binding="{Binding Acesso}" Width="*" />
-                    <DataGridTextColumn Header="Bloqueado" Binding="{Binding Bloqueado}" Width="*" />
-                    <DataGridTextColumn Header="Cadastrado" Binding="{Binding DataCadastro}" Width="*" />
-                    <DataGridTextColumn Header="Usuário" Binding="{Binding CriadoPor}" Width="*" />
+                    <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
+                    <DataGridTextColumn Header="Tipo de Acesso" Binding="{Binding TipoAcesso}" Width="*" />
+                    <DataGridTextColumn Header="{materialDesign:PackIcon delete}" Width="50" />
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
-
     </Grid>
 </UserControl>
